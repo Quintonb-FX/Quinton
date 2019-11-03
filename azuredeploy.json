@@ -35,15 +35,7 @@
             "apiVersion": "2018-07-01",
             "location": "[variables('location')]",
             "properties": {
-                "accessTier": "Hot",
-                "encryption": {
-                    "services": {
-                        "blob": {
-                            "enabled": true
-                        }
-                    },
-                    "keySource": "Microsoft.Storage"
-                }
+                "accessTier": "Hot"
             },
             "resources": [
                 {
