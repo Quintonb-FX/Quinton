@@ -49,7 +49,9 @@
             ],
             "tags": {
                 "release": "[variables('buildNumber')]",
-                "environment": "[variables('environment')]"
+                "environment": "[variables('environment')]",
+                "company": "food-x technologies",
+                "open-source": "oss"
             }
         }
     ]
