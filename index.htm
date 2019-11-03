@@ -1,74 +1,74 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-    <meta content="utf-8" http-equiv="encoding">
-    <title>Food-X Technologies: DNS Migration Tool</title>
-    <meta name="description">Migrate DNS Records to Azure using Azure Resource Manger templates.</meta>
+    <head>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">
+        <title>Food-X Technologies: DNS Migration Tool</title>
+        <meta name="description">Migrate DNS Records to Azure using Azure Resource Manger templates.</meta>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript">
-        function check(){
-            var domain = $('#domainName').val();
-            var apiKey = $('#apiKey').val();
-            var type = $('#type').val();
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript">
+            function check(){
+                var domain = $('#domainName').val();
+                var apiKey = $('#apiKey').val();
+                var type = $('#type').val();
 
-            console.log(domain, apiKey, type);
+                console.log(domain, apiKey, type);
 
-            // $(function () {
-            //     $.ajax({
-            //         url: "https://www.whoisxmlapi.com/whoisserver/DNSService",
-            //         dataType: "jsonp",
-            //         data: {apiKey: apiKey, domainName: domain, type: type},
-            //         success: function(data) {
-            //             $("body").append("<pre>"+ JSON.stringify(data,"",2)+"</pre>");
-            //         }
-            //     });
-            // });
+                // $(function () {
+                //     $.ajax({
+                //         url: "https://www.whoisxmlapi.com/whoisserver/DNSService",
+                //         dataType: "jsonp",
+                //         data: {apiKey: apiKey, domainName: domain, type: type},
+                //         success: function(data) {
+                //             $("body").append("<pre>"+ JSON.stringify(data,"",2)+"</pre>");
+                //         }
+                //     });
+                // });
 
-            return true;
-        }
-    </script>
-</head>
-<body>
-    <div>
-        <a href="https://dns-lookup-api.whoisxmlapi.com/" target="_blank">API Sign Up</a>
-    </div>
-    <div>
-        Api Key: <input type="text" name="apiKey" /><br/>
-        Type:<select name="type">
-            <option value="_all" selected>All</option>
-            <option value="A">A</option>
-            <option value="NS">NS</option>
-            <option value="MD">MD</option>
-            <option value="MF">MF</option>
-            <option value="CNAME">CNAME</option>
-            <option value="SOA">SOA</option>
-            <option value="MB">MB</option>
-            <option value="MG">MG</option>
-            <option value="MR">MR</option>
-            <option value="NULL">NULL</option>
-            <option value="WKS">WKS</option>
-            <option value="PTR">PTR</option>
-            <option value="HINFO">HINFO</option>
-            <option value="MINFO">MINFO</option>
-            <option value="MX">MX</option>
-            <option value="TXT">TXT</option>
-            <option value="RP">RP</option>
-            <option value="AFSDB">AFSDB</option>
-            <option value="X25">X25</option>
-            <option value="ISDN">ISDN</option>
-            <option value="RT">RT</option>
-            <option value="NSAP">NSAP</option>
-            <option value="NSAP_PTR">NSAP PTR</option>
-            <option value="SIG">SIG</option>
-            <option value="KEY">KEY</option>
-            <option value="PX">PX</option>
-        </select><br />
-        Domain Name: <input type="text" name="domainName" /><br/>
-        <input type="submit" onclick="return check();" text="check" />
-    </div>
-</body>
+                return true;
+            }
+        </script>
+    </head>
+    <body>
+        <div>
+            <a href="https://dns-lookup-api.whoisxmlapi.com/" target="_blank">API Sign Up</a>
+        </div>
+        <div>
+            Api Key: <input type="text" name="apiKey" /><br/>
+            Type:<select name="type">
+                <option value="_all" selected>All</option>
+                <option value="A">A</option>
+                <option value="NS">NS</option>
+                <option value="MD">MD</option>
+                <option value="MF">MF</option>
+                <option value="CNAME">CNAME</option>
+                <option value="SOA">SOA</option>
+                <option value="MB">MB</option>
+                <option value="MG">MG</option>
+                <option value="MR">MR</option>
+                <option value="NULL">NULL</option>
+                <option value="WKS">WKS</option>
+                <option value="PTR">PTR</option>
+                <option value="HINFO">HINFO</option>
+                <option value="MINFO">MINFO</option>
+                <option value="MX">MX</option>
+                <option value="TXT">TXT</option>
+                <option value="RP">RP</option>
+                <option value="AFSDB">AFSDB</option>
+                <option value="X25">X25</option>
+                <option value="ISDN">ISDN</option>
+                <option value="RT">RT</option>
+                <option value="NSAP">NSAP</option>
+                <option value="NSAP_PTR">NSAP PTR</option>
+                <option value="SIG">SIG</option>
+                <option value="KEY">KEY</option>
+                <option value="PX">PX</option>
+            </select><br />
+            Domain Name: <input type="text" name="domainName" /><br/>
+            <input type="submit" onclick="return check();" text="check" />
+        </div>
+    </body>
 </html>
