@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
         <title>Food-X Technologies: DNS Migration Tool</title>
+        <description>Migrate DNS Records to Azure using Azure Resource Manger templates.</description>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
@@ -43,9 +44,9 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript">
         function check(){
-            var domain = domainName.Value;
-            var apiKey = apiKey.Value;
-            var type = type.value;
+            var domain = $('#domainName').val();
+            var apiKey = $('#apiKey').val();
+            var type = $('#type').val();
 
             console.log(domain, apiKey, type);
 
