@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+        <title>Food-X Technologies: DNS Migration Tool</title>
 </head>
 <body>
     <a href="https://dns-lookup-api.whoisxmlapi.com/" target="_blank">API Sign Up</a>
@@ -36,25 +37,28 @@
             <option value="PX">PX</option>
         </select>
         Domain Name: <input type="text" name="domainName"><br>
+        <input type="submit" onclick="check()" text="check" />
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript">
-        var domain = domainName.Value;
-        var apiKey = apiKey.Value;
-        var type = type.value;
+        function check(){
+            var domain = domainName.Value;
+            var apiKey = apiKey.Value;
+            var type = type.value;
 
-        console.log(domain, apiKey, type);
+            console.log(domain, apiKey, type);
 
-        $(function () {
-            $.ajax({
-                url: "https://www.whoisxmlapi.com/whoisserver/DNSService",
-                dataType: "jsonp",
-                data: {apiKey: apiKey, domainName: domain, type: type},
-                success: function(data) {
-                    $("body").append("<pre>"+ JSON.stringify(data,"",2)+"</pre>");
-                }
+            $(function () {
+                $.ajax({
+                    url: "https://www.whoisxmlapi.com/whoisserver/DNSService",
+                    dataType: "jsonp",
+                    data: {apiKey: apiKey, domainName: domain, type: type},
+                    success: function(data) {
+                        $("body").append("<pre>"+ JSON.stringify(data,"",2)+"</pre>");
+                    }
+                });
             });
-        });
+        }
     </script>
 </body>
 </html>
