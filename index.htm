@@ -1,56 +1,60 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 </head>
 <body>
-<a href="https://dns-lookup-api.whoisxmlapi.com/" target="_blank">API Sign Up</a>
-<div>
- Api Key: <input type="text" name="apiKey"><br>
-<select name="type">
-<option value="_all" selected>All</option>
-<option value="A">A</option>
-<option value="NS">NS</option>
-<option value="MD">MD</option>
-<option value="MF">MF</option>
-<option value="CNAME">CNAME</option>
-<option value="SOA">SOA</option>
-<option value="MB">MB</option>
-<option value="MG">MG</option>
-<option value="MR">MR</option>
-<option value="NULL">NULL</option>
-<option value="WKS">WKS</option>
-<option value="PTR">PTR</option>
-<option value="HINFO">HINFO</option>
-<option value="MINFO">MINFO</option>
-<option value="MX">MX</option>
-<option value="TXT">TXT</option>
-<option value="RP">RP</option>
-<option value="AFSDB">AFSDB</option>
-<option value="X25">X25</option>
-<option value="ISDN">ISDN</option>
-<option value="RT">RT</option>
-<option value="NSAP">NSAP</option>
-<option value="NSAP_PTR">NSAP PTR</option>
-<option value="SIG">SIG</option>
-<option value="KEY">KEY</option>
-<option value="PX">PX</option>
-</select>
-</div>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript">
-    var domain = "example.com";
-    var apiKey = "Your DNS Lookup API Key";
-    var type = "_all";
+    <a href="https://dns-lookup-api.whoisxmlapi.com/" target="_blank">API Sign Up</a>
+    <div>
+        Api Key: <input type="text" name="apiKey"><br>
+        Type:<select name="type">
+            <option value="_all" selected>All</option>
+            <option value="A">A</option>
+            <option value="NS">NS</option>
+            <option value="MD">MD</option>
+            <option value="MF">MF</option>
+            <option value="CNAME">CNAME</option>
+            <option value="SOA">SOA</option>
+            <option value="MB">MB</option>
+            <option value="MG">MG</option>
+            <option value="MR">MR</option>
+            <option value="NULL">NULL</option>
+            <option value="WKS">WKS</option>
+            <option value="PTR">PTR</option>
+            <option value="HINFO">HINFO</option>
+            <option value="MINFO">MINFO</option>
+            <option value="MX">MX</option>
+            <option value="TXT">TXT</option>
+            <option value="RP">RP</option>
+            <option value="AFSDB">AFSDB</option>
+            <option value="X25">X25</option>
+            <option value="ISDN">ISDN</option>
+            <option value="RT">RT</option>
+            <option value="NSAP">NSAP</option>
+            <option value="NSAP_PTR">NSAP PTR</option>
+            <option value="SIG">SIG</option>
+            <option value="KEY">KEY</option>
+            <option value="PX">PX</option>
+        </select>
+        Domain Name: <input type="text" name="domainName"><br>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        var domain = domainName.Value;
+        var apiKey = apiKey.Value;
+        var type = type.value;
 
-    $(function () {
-        $.ajax({
-            url: "https://www.whoisxmlapi.com/whoisserver/DNSService",
-            dataType: "jsonp",
-            data: {apiKey: apiKey, domainName: domain, type: type},
-            success: function(data) {
-                $("body").append("<pre>"+ JSON.stringify(data,"",2)+"</pre>");
-            }
+        console.log(domain, apiKey, type);
+
+        $(function () {
+            $.ajax({
+                url: "https://www.whoisxmlapi.com/whoisserver/DNSService",
+                dataType: "jsonp",
+                data: {apiKey: apiKey, domainName: domain, type: type},
+                success: function(data) {
+                    $("body").append("<pre>"+ JSON.stringify(data,"",2)+"</pre>");
+                }
+            });
         });
-    });
-</script>
+    </script>
 </body>
 </html>
