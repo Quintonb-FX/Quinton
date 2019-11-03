@@ -7,38 +7,14 @@
         <meta name="description" content="Migrate DNS Records to Azure using Azure Resource Manger templates." />
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script type="text/javascript">
-            function check(){
-                var domain = $('#domainName').val();
-                var apiKey = $('#apiKey').val();
-                var type = $('#type').val();
-
-                console.log(domain, apiKey, type);
-
-                // $(function () {
-                //     $.ajax({
-                //         url: "https://www.whoisxmlapi.com/whoisserver/DNSService",
-                //         dataType: "jsonp",
-                //         data: {apiKey: apiKey, domainName: domain, type: type},
-                //         success: function(data) {
-                //             $("body").append("<pre>"+ JSON.stringify(data,"",2)+"</pre>");
-                //         }
-                //     });
-                // });
-
-                return true;
-            }
-        </script>
     </head>
     <body>
         <div>
             To use this you need to <a href="https://dns-lookup-api.whoisxmlapi.com/" target="_blank">sign up</a>, to get your own API Key.
         </div>
         <div>
-            Api Key: <input type="text" name="apiKey" /><br/>
-            Type:<select name="type">
+            Api Key: <input type="text" id="apiKey" /><br/>
+            Type:<select id="type">
                 <option value="_all" selected>All</option>
                 <option value="A">A</option>
                 <option value="NS">NS</option>
@@ -67,8 +43,23 @@
                 <option value="KEY">KEY</option>
                 <option value="PX">PX</option>
             </select><br />
-            Domain Name: <input type="text" name="domainName" /><br/>
-            <input type="submit" onclick="return check();" text="check" />
+            Domain Name: <input type="text" id="domainName" /><br/>
+            <input type="submit" text="check" id="check" value="Get DNS" />
         </div>
     </body>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#check").click(function(e){
+                $.ajax({
+                    url: "https://www.whoisxmlapi.com/whoisserver/DNSService",
+                    dataType: "jsonp",
+                    data: {apiKey: $('#apiKey').val(), domainName: $('#domainName').val(), type: $('#type').val()},
+                    success: function(data) {
+                        $("body").append("<pre>"+ JSON.stringify(data,"",2)+"</pre>");
+                    }
+                });
+            });
+        });
+    </script>
 </html>
