@@ -35,13 +35,20 @@
             "apiVersion": "2018-07-01",
             "location": "[variables('location')]",
             "properties": {
-                "accessTier": "Hot"
+                "accessTier": "Hot",
+                "networkAcls": {
+                    "bypass": "AzureServices",
+                    "virtualNetworkRules": [],
+                    "ipRules": [],
+                    "defaultAction": "Allow"
+                },
+                "supportsHttpsTrafficOnly": false
             },
             "resources": [
                 {
                     "type": "blobServices/containers",
-                    "name": "$web",
-                    "apiVersion": "2018-07-01",
+                    "name": "default/$web",
+                    "apiVersion": "2018-03-01-preview",
                     "dependsOn": [
                         "[variables('storageAccountName')]"
                     ]
