@@ -32,7 +32,7 @@
             },
             "kind": "StorageV2",
             "name": "[variables('storageAccountName')]",
-            "apiVersion": "2018-07-01",
+            "apiVersion": "2019-04-01",
             "location": "[variables('location')]",
             "properties": {
                 "accessTier": "Hot",
@@ -48,7 +48,7 @@
                 {
                     "type": "blobServices/containers",
                     "name": "default/$web",
-                    "apiVersion": "2018-03-01-preview",
+                    "apiVersion": "2019-04-01",
                     "dependsOn": [
                         "[variables('storageAccountName')]"
                     ]
