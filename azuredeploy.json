@@ -19,6 +19,7 @@
     },
     "variables": {
         "location": "[resourceGroup().location]",
+        "storageAccountName": "dns-migration-tool",
         "environment": "[parameters('env')]",
         "buildNumber": "[parameters('build')]"
     },
