@@ -1,0 +1,63 @@
+{
+    "$schema": "http://schemas.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "env": {
+            "type": "string",
+            "defaultValue": "unknown",
+            "metadata": {
+                "description": "environment"
+            }
+        },
+        "build": {
+            "type": "string",
+            "defaultValue": "unknown",
+            "metadata": {
+                "description": "build number"
+            }
+        }
+    },
+    "variables": {
+        "location": "[resourceGroup().location]",
+        "environment": "[parameters('env')]",
+        "buildNumber": "[parameters('build')]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "StorageV2",
+            "name": "[variables('storageAccountName')]",
+            "apiVersion": "2018-07-01",
+            "location": "[variables('location')]",
+            "properties": {
+                "accessTier": "Hot",
+                "encryption": {
+                    "services": {
+                        "blob": {
+                            "enabled": true
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                }
+            },
+            "resources": [
+                {
+                    "type": "blobServices/containers",
+                    "name": "$web",
+                    "apiVersion": "2018-07-01",
+                    "dependsOn": [
+                        "[variables('storageAccountName')]"
+                    ]
+                }
+            ],
+            "tags": {
+                "release": "[variables('buildNumber')]",
+                "environment": "[variables('environment')]"
+            }
+        }
+    ]
+}
