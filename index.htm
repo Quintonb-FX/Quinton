@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <a href="https://dns-lookup-api.whoisxmlapi.com/" target="_blank">API Sign Up</a>
     <div>
-        Api Key: <input type="text" name="apiKey"><br>
+        <a href="https://dns-lookup-api.whoisxmlapi.com/" target="_blank">API Sign Up</a>
+    </div>
+    <div>
+        Api Key: <input type="text" name="apiKey"><br/>
         Type:<select name="type">
             <option value="_all" selected>All</option>
             <option value="A">A</option>
@@ -38,8 +40,8 @@
             <option value="SIG">SIG</option>
             <option value="KEY">KEY</option>
             <option value="PX">PX</option>
-        </select>
-        Domain Name: <input type="text" name="domainName"><br>
+        </select><br />
+        Domain Name: <input type="text" name="domainName"><br/>
         <input type="submit" onclick="check()" text="check" />
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
