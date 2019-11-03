@@ -42,7 +42,7 @@
             <option value="PX">PX</option>
         </select><br />
         Domain Name: <input type="text" name="domainName"><br/>
-        <input type="submit" onclick="check()" text="check" />
+        <input type="submit" onclick="return check();" text="check" />
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript">
@@ -63,6 +63,8 @@
                     }
                 });
             });
+
+            return true;
         }
     </script>
 </body>
