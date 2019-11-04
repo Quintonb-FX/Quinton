@@ -48,7 +48,6 @@
         </div>
         <section class="try">
             <div class="container">
-            <h3>Editor</h3>
                 <div class="editor row">
                     <div class="span9">
                         <div class="editor-frame">
@@ -79,27 +78,20 @@
                 $.ajax({
                     url: "https://www.whoisxmlapi.com/whoisserver/DNSService",
                     dataType: "jsonp",
-                    data: {apiKey: $('#apiKey').val(), domainName: $('#domainName').val(), type: $('#type').val()},
+                    data: {
+                            apiKey: $('#apiKey').val(),
+                            domainName: $('#domainName').val(),
+                            type: $('#type').val()
+                        },
                     success: function(data) {
-                        $("body").append("<pre>"+ JSON.stringify(data,"",2)+"</pre>");
+                        editor = monico.editor.create(document.getElementById('editor'), {
+                                value: JSON.stringify(data,"",2),
+                                language: 'json',
+                                readOnly: true
+                            }
+                        )
                     }
                 });
-            });
-
-            require(['vs/editor/editor.main'], function() {
-                var MODES = (function() {
-                    var modesIds = monaco.languages.getLanguages().map(function(lang) {
-                        return lang.id;
-                    });
-                    modesIds.sort();
-
-                    return modesIds.map(function(modeId) {
-                        return {
-                            modeId: modeId,
-                            sampleURL: 'https://microsoft.github.io/monaco-editor/index/samples/sample.' + modeId + '.txt'
-                        };
-                    });
-                })();
             });
 
             window.onresize = function() {
