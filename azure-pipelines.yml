@@ -15,6 +15,7 @@ steps:
     location: 'West US 2'
     templateLocation: 'Linked artifact'
     csmFile: 'azuredeploy.json'
+    overrideParameters: '-storage valdnsfoodxtool'
     deploymentMode: 'Validation'
 
 - task: CopyFiles@2
