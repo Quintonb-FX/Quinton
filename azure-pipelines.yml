@@ -29,3 +29,13 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    ConnectedServiceName: 'Pay-As-You-Go(7cae5f28-46fd-44f0-b620-f45276435127)'
+    subscriptionName: '7cae5f28-46fd-44f0-b620-f45276435127'
+    action: 'DeleteRG'
+    resourceGroupName: 'val-oss-$(Build.BuildNumber)'
+    location: 'West US 2'
+    condition: always()
