@@ -12,7 +12,7 @@ dnsApp.controller('json', ['$scope', '$http', function ($scope, $http) {
 
     console.log(url);
 
-    $http.get('https://www.whoisxmlapi.com/whoisserver/DNSService').then(function (response)
+    $http.jsonp(url).then(function (response)
     {
         console.log(response);
 
