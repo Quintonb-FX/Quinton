@@ -11,7 +11,7 @@ steps:
     ConnectedServiceName: 'Pay-As-You-Go(7cae5f28-46fd-44f0-b620-f45276435127)'
     subscriptionName: '7cae5f28-46fd-44f0-b620-f45276435127'
     action: 'Create Or Update Resource Group'
-    resourceGroupName: 'open-source'
+    resourceGroupName: 'open-source-test'
     location: 'West US 2'
     templateLocation: 'Linked artifact'
     csmFile: 'azuredeploy.json'
