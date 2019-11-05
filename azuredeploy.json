@@ -47,42 +47,10 @@
             "resources": [
                 {
                     "type": "blobServices/containers",
-                    "name": "default",
-                    "apiVersion": "2019-04-01",
-                    "dependsOn": [
-                        "[variables('storageAccountName')]"
-                    ],
-                    "properties": {
-                        "cors": {
-                            "corsRules": [
-                                {
-                                    "allowedOrigins": [
-                                        "https://www.whoisxmlapi.com/whoisserver/DNSService"
-                                    ],
-                                    "allowedMethods": [
-                                        "GET"
-                                    ],
-                                    "maxAgeInSeconds": 0,
-                                    "exposedHeaders": [
-                                        "Access-Control-Allow-Origin"
-                                    ],
-                                    "allowedHeaders": [
-                                        "Access-Control-Allow-Origin"
-                                    ]
-                                }
-                            ]
-                        },
-                        "deleteRetentionPolicy": {
-                            "enabled": false
-                        }
-                    }
-                },
-                {
-                    "type": "blobServices/containers",
                     "name": "default/$web",
                     "apiVersion": "2019-04-01",
                     "dependsOn": [
-                        "[variables('storageAccountName')]"
+                        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
                     ]
                 }
             ],
@@ -91,6 +59,38 @@
                 "environment": "[variables('environment')]",
                 "company": "food-x technologies",
                 "open-source": "oss"
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/blobServices",
+            "apiVersion": "2019-04-01",
+            "name": "[concat(variables('storageAccountName'), '/default')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
+            ],
+            "properties": {
+                "cors": {
+                    "corsRules": [
+                        {
+                            "allowedOrigins": [
+                                "https://www.whoisxmlapi.com/whoisserver/DNSService"
+                            ],
+                            "allowedMethods": [
+                                "GET"
+                            ],
+                            "maxAgeInSeconds": 0,
+                            "exposedHeaders": [
+                                "Access-Control-Allow-Origin"
+                            ],
+                            "allowedHeaders": [
+                                "Access-Control-Allow-Origin"
+                            ]
+                        }
+                    ]
+                },
+                "deleteRetentionPolicy": {
+                    "enabled": false
+                }
             }
         }
     ]
