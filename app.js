@@ -10,7 +10,7 @@ dnsApp.controller('json', ['$scope', '$http', function ($scope, $http) {
     var url = 'https://www.whoisxmlapi.com/whoisserver/DNSService?apiKey=' + $scope.key +
                 '&domainName='+ $scope.domain+
                 '&type='+ $scope.type +
-                '&outputFormat=json'
+                '&outputFormat=JSON'
     $http.get('https://www.whoisxmlapi.com/whoisserver/DNSService').success(function (data)
                     {
                         $scope.data = data;
