@@ -8,22 +8,23 @@ dnsApp.controller('json', ['$scope', '$http', function ($scope, $http) {
     require.config({ paths: { 'vs': 'node_modules/monaco-editor/min/vs' } });
     
     var rootUrl = 'https://www.whoisxmlapi.com/whoisserver/DNSService';
-    var url = '${rootUrl}?apiKey=${scope.key}&domainName=${scope.domain}&type=${scope.type}&outputFormat=JSON&callback=JSON_CALLBACK';
 
-    console.log(url);
 
-    $http.jsonp(url).then(function (response)
-    {
-        console.log(response);
+    $scope.change = function () {
+        var url = '${rootUrl}?apiKey=${scope.key}&domainName=${scope.domain}&type=${scope.type}&outputFormat=JSON&callback=JSON_CALLBACK';
+        console.log(url);
 
-        // $scope.editor = monaco.editor.create(document.getElementById('container'), {
-        //     value: JSON.stringify(response, null, 2),
-        //     language: 'json',
-        //     readOnly: true
-        // });
-    });
-
-    // $scope.change = function () {
-    //     $scope.editor.setValue(JSON.stringify($scope.data, null, 2));
-    // };
+        $http.jsonp(url).then(function (response)
+        {
+            console.log(response);
+    
+            require(['vs/editor/editor.main'], function () {
+            // $scope.editor = monaco.editor.create(document.getElementById('container'), {
+            //     value: JSON.stringify(response, null, 2),
+            //     language: 'json',
+            //     readOnly: true
+            // });
+            });
+        });
+    };
 }]);
