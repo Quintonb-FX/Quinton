@@ -42,7 +42,7 @@
                     "ipRules": [],
                     "defaultAction": "Allow"
                 },
-                "supportsHttpsTrafficOnly": false
+                "supportsHttpsTrafficOnly": true
             },
             "resources": [
                 {
