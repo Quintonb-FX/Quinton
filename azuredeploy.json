@@ -52,7 +52,7 @@
                     "dependsOn": [
                         "[variables('storageAccountName')]"
                     ],
-                    "properties"{
+                    "properties": {
                         "cors": {
                             "corsRules": [
                                 {
