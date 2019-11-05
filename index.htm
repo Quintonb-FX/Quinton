@@ -12,9 +12,9 @@
         
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js" crossorigin="anonymous"></script>
-        <script src="node_modules/monaco-editor/min/vs/loader.js"></script>
-        <script src="app.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="./node_modules/monaco-editor/min/vs/loader.js"></script>
+        <script src="./app.js"></script>
     </head>
     <body>
 
@@ -23,8 +23,9 @@
                 To use this you need to <a href="https://dns-lookup-api.whoisxmlapi.com/" target="_blank">sign up</a>, to get your own API Key.
             </div>
             <div>
-                Api Key: <input type="text" id="apiKey" ng-change="change()" /><br/>
-                Type:<select id="type" ng-change="change()">
+                Api Key: <input ng-model="key" type="text" id="apiKey" ng-change="change()" /><br/>
+                Domain Name: <input ng-model="domain" type="text" id="domainName" ng-change="change()" /><br/>
+                Type:<select ng-model="type" id="type" ng-change="change()">
                     <option value="_all" selected>All</option>
                     <option value="A">A</option>
                     <option value="NS">NS</option>
@@ -53,7 +54,6 @@
                     <option value="KEY">KEY</option>
                     <option value="PX">PX</option>
                 </select><br />
-                Domain Name: <input type="text" id="domainName" ng-change="change()" /><br/>
             </div>
             <div id="editor"></div>
         </div>

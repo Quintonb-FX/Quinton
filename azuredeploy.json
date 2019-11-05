@@ -47,6 +47,38 @@
             "resources": [
                 {
                     "type": "blobServices/containers",
+                    "name": "default",
+                    "apiVersion": "2019-04-01",
+                    "dependsOn": [
+                        "[variables('storageAccountName')]"
+                    ],
+                    "properties"{
+                        "cors": {
+                            "corsRules": [
+                                {
+                                    "allowedOrigins": [
+                                        "https://www.whoisxmlapi.com/whoisserver/DNSService"
+                                    ],
+                                    "allowedMethods": [
+                                        "GET"
+                                    ],
+                                    "maxAgeInSeconds": 0,
+                                    "exposedHeaders": [
+                                        "Access-Control-Allow-Origin"
+                                    ],
+                                    "allowedHeaders": [
+                                        "Access-Control-Allow-Origin"
+                                    ]
+                                }
+                            ]
+                        },
+                        "deleteRetentionPolicy": {
+                            "enabled": false
+                        }
+                    }
+                },
+                {
+                    "type": "blobServices/containers",
                     "name": "default/$web",
                     "apiVersion": "2019-04-01",
                     "dependsOn": [
