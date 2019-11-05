@@ -18,46 +18,47 @@
         <script src="app.js"></script>
     </head>
     <body>
-
-        <div class="container vertical-center" ng-controller="json">
-            <div>
-                To use this you need to <a href="https://dns-lookup-api.whoisxmlapi.com/" target="_blank">sign up</a>, to get your own API Key.
-            </div>
-            <div>
-                Api Key: <input ng-model="key" type="text" id="apiKey" ng-change="change()" required /><br/>
-                Domain Name: <input ng-model="domain" type="text" id="domainName" ng-change="change()" required /><br/>
-                Type: <select ng-model="type" id="type" ng-change="change()" required>
-                    <option value="_all" selected>All</option>
-                    <option value="A">A</option>
-                    <option value="NS">NS</option>
-                    <option value="MD">MD</option>
-                    <option value="MF">MF</option>
-                    <option value="CNAME">CNAME</option>
-                    <option value="SOA">SOA</option>
-                    <option value="MB">MB</option>
-                    <option value="MG">MG</option>
-                    <option value="MR">MR</option>
-                    <option value="NULL">NULL</option>
-                    <option value="WKS">WKS</option>
-                    <option value="PTR">PTR</option>
-                    <option value="HINFO">HINFO</option>
-                    <option value="MINFO">MINFO</option>
-                    <option value="MX">MX</option>
-                    <option value="TXT">TXT</option>
-                    <option value="RP">RP</option>
-                    <option value="AFSDB">AFSDB</option>
-                    <option value="X25">X25</option>
-                    <option value="ISDN">ISDN</option>
-                    <option value="RT">RT</option>
-                    <option value="NSAP">NSAP</option>
-                    <option value="NSAP_PTR">NSAP PTR</option>
-                    <option value="SIG">SIG</option>
-                    <option value="KEY">KEY</option>
-                    <option value="PX">PX</option>
-                </select><br />
-            </div>
-            <div class="panel-footer">
-                <div id="container" class="codeEditor"></div>
+        <div class="container vertical-center">
+            <div class="panel panel-primary" ng-controller="json">
+                <div>
+                    To use this you need to <a href="https://dns-lookup-api.whoisxmlapi.com/" target="_blank">sign up</a>, to get your own API Key.
+                </div>
+                <div>
+                    Api Key: <input ng-model="key" type="text" id="apiKey" ng-change="change()" required /><br/>
+                    Domain Name: <input ng-model="domain" type="text" id="domainName" ng-change="change()" required /><br/>
+                    Type: <select ng-model="type" id="type" ng-change="change()" required>
+                        <option value="_all" selected>All</option>
+                        <option value="A">A</option>
+                        <option value="NS">NS</option>
+                        <option value="MD">MD</option>
+                        <option value="MF">MF</option>
+                        <option value="CNAME">CNAME</option>
+                        <option value="SOA">SOA</option>
+                        <option value="MB">MB</option>
+                        <option value="MG">MG</option>
+                        <option value="MR">MR</option>
+                        <option value="NULL">NULL</option>
+                        <option value="WKS">WKS</option>
+                        <option value="PTR">PTR</option>
+                        <option value="HINFO">HINFO</option>
+                        <option value="MINFO">MINFO</option>
+                        <option value="MX">MX</option>
+                        <option value="TXT">TXT</option>
+                        <option value="RP">RP</option>
+                        <option value="AFSDB">AFSDB</option>
+                        <option value="X25">X25</option>
+                        <option value="ISDN">ISDN</option>
+                        <option value="RT">RT</option>
+                        <option value="NSAP">NSAP</option>
+                        <option value="NSAP_PTR">NSAP PTR</option>
+                        <option value="SIG">SIG</option>
+                        <option value="KEY">KEY</option>
+                        <option value="PX">PX</option>
+                    </select><br />
+                </div>
+                <div class="panel-footer">
+                    <div id="container" class="codeEditor"></div>
+                </div>
             </div>
         </div>
     </body>
