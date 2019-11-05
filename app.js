@@ -7,11 +7,11 @@ var dnsApp = angular.module('dnsApp',
 dnsApp.controller('json', ['$scope', '$http', function ($scope, $http) {
     require.config({ paths: { 'vs': 'node_modules/monaco-editor/min/vs' } });
     
-    var url = 'https://www.whoisxmlapi.com/whoisserver/DNSService?apiKey=' + $scope.key +
-                '&domainName='+ $scope.domain+
-                '&type='+ $scope.type +
-                '&outputFormat=JSON';
-                
+    var rootUrl = 'https://www.whoisxmlapi.com/whoisserver/DNSService';
+    var url = '{rootUrl}?apiKey=${scope.key}&domainName=${scope.domain}&type=${scope.type}&outputFormat=JSON';
+
+    console.log(url);
+
     $http.get('https://www.whoisxmlapi.com/whoisserver/DNSService').then(function (response)
                     {
                         require(['vs/editor/editor.main'], function () {
