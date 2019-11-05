@@ -2,6 +2,12 @@
     "$schema": "http://schemas.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "storage": {
+            "type": "string",
+            "metadata": {
+                "description": "environment"
+            }
+        },
         "env": {
             "type": "string",
             "defaultValue": "unknown",
@@ -19,7 +25,7 @@
     },
     "variables": {
         "location": "[resourceGroup().location]",
-        "storageAccountName": "[concat(variables('environment'), 'dnsmigrationtool')]",
+        "storageAccountName": "[parameters('storage')]",
         "environment": "[parameters('env')]",
         "buildNumber": "[parameters('build')]"
     },
