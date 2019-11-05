@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="dnsApp">
     <head>
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
         <meta content="utf-8" http-equiv="encoding">
@@ -8,83 +8,52 @@
         <meta name="description" content="Migrate DNS Records to Azure using Azure Resource Manger templates." />
         
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.0.7/angular.min.js" crossorigin="anonymous"></script>
+        <script src="node_modules/monaco-editor/min/vs/loader.js"></script>
+        <script src="app.js"></script>
+        
     </head>
     <body>
-        <div>
-            To use this you need to <a href="https://dns-lookup-api.whoisxmlapi.com/" target="_blank">sign up</a>, to get your own API Key.
+
+        <div class="container vertical-center" ng-controller="json">
+            <div>
+                To use this you need to <a href="https://dns-lookup-api.whoisxmlapi.com/" target="_blank">sign up</a>, to get your own API Key.
+            </div>
+            <div>
+                Api Key: <input type="text" id="apiKey" ng-change="change()" /><br/>
+                Type:<select id="type" ng-change="change()">
+                    <option value="_all" selected>All</option>
+                    <option value="A">A</option>
+                    <option value="NS">NS</option>
+                    <option value="MD">MD</option>
+                    <option value="MF">MF</option>
+                    <option value="CNAME">CNAME</option>
+                    <option value="SOA">SOA</option>
+                    <option value="MB">MB</option>
+                    <option value="MG">MG</option>
+                    <option value="MR">MR</option>
+                    <option value="NULL">NULL</option>
+                    <option value="WKS">WKS</option>
+                    <option value="PTR">PTR</option>
+                    <option value="HINFO">HINFO</option>
+                    <option value="MINFO">MINFO</option>
+                    <option value="MX">MX</option>
+                    <option value="TXT">TXT</option>
+                    <option value="RP">RP</option>
+                    <option value="AFSDB">AFSDB</option>
+                    <option value="X25">X25</option>
+                    <option value="ISDN">ISDN</option>
+                    <option value="RT">RT</option>
+                    <option value="NSAP">NSAP</option>
+                    <option value="NSAP_PTR">NSAP PTR</option>
+                    <option value="SIG">SIG</option>
+                    <option value="KEY">KEY</option>
+                    <option value="PX">PX</option>
+                </select><br />
+                Domain Name: <input type="text" id="domainName" ng-change="change()" /><br/>
+            </div>
+            <div id="editor"></div>
         </div>
-        <div>
-            Api Key: <input type="text" id="apiKey" /><br/>
-            Type:<select id="type">
-                <option value="_all" selected>All</option>
-                <option value="A">A</option>
-                <option value="NS">NS</option>
-                <option value="MD">MD</option>
-                <option value="MF">MF</option>
-                <option value="CNAME">CNAME</option>
-                <option value="SOA">SOA</option>
-                <option value="MB">MB</option>
-                <option value="MG">MG</option>
-                <option value="MR">MR</option>
-                <option value="NULL">NULL</option>
-                <option value="WKS">WKS</option>
-                <option value="PTR">PTR</option>
-                <option value="HINFO">HINFO</option>
-                <option value="MINFO">MINFO</option>
-                <option value="MX">MX</option>
-                <option value="TXT">TXT</option>
-                <option value="RP">RP</option>
-                <option value="AFSDB">AFSDB</option>
-                <option value="X25">X25</option>
-                <option value="ISDN">ISDN</option>
-                <option value="RT">RT</option>
-                <option value="NSAP">NSAP</option>
-                <option value="NSAP_PTR">NSAP PTR</option>
-                <option value="SIG">SIG</option>
-                <option value="KEY">KEY</option>
-                <option value="PX">PX</option>
-            </select><br />
-            Domain Name: <input type="text" id="domainName" /><br/>
-            <input type="submit" text="check" id="check" value="Get DNS" />
-        </div>
-        <div id="editor"></div>
     </body>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        'use strict';
-
-        require.config({
-            baseUrl: 'https://microsoft.github.io/monaco-editor/node_modules/monaco-editor/min/'
-        });
-
-        var editor = null;
-
-        $(document).ready(function() {
-            $("#check").click(function(e){
-                $.ajax({
-                    url: "https://www.whoisxmlapi.com/whoisserver/DNSService",
-                    dataType: "jsonp",
-                    data: {
-                            apiKey: $('#apiKey').val(),
-                            domainName: $('#domainName').val(),
-                            type: $('#type').val()
-                        },
-                    success: function(data) {
-                        editor = monico.editor.create(document.getElementById('editor'), {
-                                value: JSON.stringify(data,"",2),
-                                language: 'json',
-                                readOnly: true
-                            }
-                        )
-                    }
-                });
-            });
-
-            window.onresize = function() {
-                if (editor) {
-                    editor.layout();
-                }
-            };
-        });
-    </script>
 </html>
