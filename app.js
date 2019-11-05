@@ -13,17 +13,17 @@ dnsApp.controller('json', ['$scope', '$http', function ($scope, $http) {
     console.log(url);
 
     $http.get('https://www.whoisxmlapi.com/whoisserver/DNSService').then(function (response)
-                    {
-                        require(['vs/editor/editor.main'], function () {
-                            $scope.editor = monaco.editor.create(document.getElementById('container'), {
-                                value: JSON.stringify(response, null, 2),
-                                language: 'json',
-                                readOnly: true
-                            });
-                        });
-                    });
+    {
+        console.log(response);
 
-    $scope.change = function () {
-        $scope.editor.setValue(JSON.stringify($scope.data, null, 2));
-    };
+        // $scope.editor = monaco.editor.create(document.getElementById('container'), {
+        //     value: JSON.stringify(response, null, 2),
+        //     language: 'json',
+        //     readOnly: true
+        // });
+    });
+
+    // $scope.change = function () {
+    //     $scope.editor.setValue(JSON.stringify($scope.data, null, 2));
+    // };
 }]);
