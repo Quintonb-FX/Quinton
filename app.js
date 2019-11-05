@@ -11,13 +11,11 @@ dnsApp.controller('json', ['$scope', '$http', function ($scope, $http) {
                 '&domainName='+ $scope.domain+
                 '&type='+ $scope.type +
                 '&outputFormat=JSON'
-    $http.get('https://www.whoisxmlapi.com/whoisserver/DNSService').then(function (data)
+    $http.get('https://www.whoisxmlapi.com/whoisserver/DNSService').then(function (response)
                     {
-                        $scope.data = data;
-
                         require(['vs/editor/editor.main'], function () {
                             $scope.editor = monaco.editor.create(document.getElementById('container'), {
-                                value: JSON.stringify(data, null, 2),
+                                value: JSON.stringify(response, null, 2),
                                 language: 'json',
                                 readOnly: true
                             });
