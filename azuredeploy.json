@@ -5,7 +5,7 @@
         "storage": {
             "type": "string",
             "metadata": {
-                "description": "environment"
+                "description": "storage account name for hosting"
             }
         },
         "env": {
