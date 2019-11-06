@@ -15,18 +15,17 @@ dnsApp.controller('json', ['$scope', '$http', function ($scope, $http) {
                 '&domainName=' + $scope.domain +
                 '&type=' + $scope.type +
                 '&outputFormat=JSON&callback=JSON_CALLBACK';
-        console.log(url);
 
         $http.get(url).then(function (response)
         {
             console.log(response);
     
             require(['vs/editor/editor.main'], function () {
-            // $scope.editor = monaco.editor.create(document.getElementById('container'), {
-            //     value: JSON.stringify(response, null, 2),
-            //     language: 'json',
-            //     readOnly: true
-            // });
+            $scope.editor = monaco.editor.create(document.getElementById('container'), {
+                value: JSON.stringify(response, null, 2),
+                language: 'json',
+                readOnly: true
+            });
             });
         });
     };
