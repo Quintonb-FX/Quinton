@@ -35,10 +35,10 @@ dnsApp.controller('json', ['$scope', '$http', function ($scope, $http) {
     
             require(['vs/editor/editor.main'], function () {
                 $scope.editor = monaco.editor.create(document.getElementById('container'), {
-                    value: JSON.stringify(response, null, 2),
+                    value: JSON.stringify(response.data, null, 2),
                     language: 'json',
                     readOnly: true
-                    });
+                });
             });
         });
     };
