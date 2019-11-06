@@ -12,14 +12,12 @@ dnsApp.controller('json', ['$scope', '$http', function ($scope, $http) {
     $scope.typeDefault = '_all';
 
     $scope.change = function () {
-        if (!$scope.key.$valid)
-        {  
-            console.log($scope.key);
+        if ($scope.key === undefined)
+        {
             return;
         }
-        if (!$scope.domain.$valid)
-        {  
-            console.log($scope.domain);
+        if ($scope.domain === undefined)
+        {
             return;
         }
         
