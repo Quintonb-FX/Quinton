@@ -26,7 +26,7 @@
                 <div>
                     Api Key: <input ng-model="key" type="text" id="apiKey" ng-change="change()" required /><br/>
                     Domain Name: <input ng-model="domain" type="text" id="domainName" ng-change="change()" required /><br/>
-                    Type: <select ng-model="type" [(ngModel)]="typeDefault" id="type" ng-change="change()" required>
+                    Type: <select ng-model="type" id="type" ng-change="change()" required>
                         <option value="_all">All</option>
                         <option value="A">A</option>
                         <option value="NS">NS</option>
