@@ -9,7 +9,20 @@ dnsApp.controller('json', ['$scope', '$http', function ($scope, $http) {
     
     const rootUrl = 'https://www.whoisxmlapi.com/whoisserver/DNSService';
 
+    $scope.typeDefault = '_all';
+
     $scope.change = function () {
+        if (!$scope.key.$valid)
+        {  
+            console.log($scope.key);
+            return;
+        }
+        if (!$scope.domain.$valid)
+        {  
+            console.log($scope.domain);
+            return;
+        }
+        
         var url = rootUrl +
                 '?apiKey=' + $scope.key +
                 '&domainName=' + $scope.domain +
