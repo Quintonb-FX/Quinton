@@ -4,7 +4,7 @@ var dnsApp = angular.module('dnsApp',
     []
 );
 
-dnsApp.controller('json', ['$scope', '$http', function ($scope, $http) {
+dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $sce) {
     require.config({ paths: { 'vs': 'node_modules/monaco-editor/min/vs' } });
     
     const rootUrl = 'https://www.whoisxmlapi.com/whoisserver/DNSService';
