@@ -27,9 +27,9 @@ dnsApp.controller('json', ['$scope', '$http', function ($scope, $http) {
                 '&type=' + $scope.type +
                 '&outputFormat=JSON&callback=JSON_CALLBACK';
 
-        $http.jsonp(url).success(function (response)
+        $http.jsonp(url).then(function (response)
         {
-            console.log(response);
+            console.debug(response);
     
             require(['vs/editor/editor.main'], function () {
                 $scope.editor = monaco.editor.create(document.getElementById('container'), {
