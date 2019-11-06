@@ -12,7 +12,7 @@ dnsApp.controller('json', ['$scope', '$http', function ($scope, $http) {
     $scope.change = function () {
         var url = rootUrl +
                 '?apiKey=' + $scope.key +
-                'domainName=' + $scope.domain +
+                '&domainName=' + $scope.domain +
                 '&type=' + $scope.type +
                 '&outputFormat=JSON&callback=JSON_CALLBACK';
         console.log(url);
