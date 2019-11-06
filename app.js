@@ -30,7 +30,6 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
         
         var trustedUrl = $sce.trustAsResourceUrl(url);
         $http.jsonp(trustedUrl, {jsonpCallbackParam: 'callback'}).then(function(data){
-            console.log(data);
             require(['vs/editor/editor.main'], function () {
                 $scope.editor = monaco.editor.create(document.getElementById('container'), {
                     value: JSON.stringify(data.data, null, 2),
