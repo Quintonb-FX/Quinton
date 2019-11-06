@@ -10,6 +10,7 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
     const rootUrl = 'https://www.whoisxmlapi.com/whoisserver/DNSService';
 
     $scope.type = '_all';
+    $scope.domain - 'microsoft.com';
 
     $scope.change = function () {
         if ($scope.key === undefined)
