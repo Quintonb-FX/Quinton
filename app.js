@@ -39,10 +39,6 @@ dnsApp.controller('json', ['$scope', '$http', function ($scope, $http) {
             });
         };
 
-        $http.get(url).then(function (response)
-        {
-            console.debug(response);
-    
-        });
+        $http.jsonp(url);
     };
 }]);
