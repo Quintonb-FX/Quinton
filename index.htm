@@ -20,47 +20,51 @@
     <body>
         <div class="container vertical-center">
             <div class="panel panel-primary" ng-controller="json">
-
                 <div class="panel-heading">
-                        <h3 class="panel-title">
+                    <h3 class="panel-title">
                         <span class="glyphicon glyphicon-book"></span> To use this you need to <a href="https://dns-lookup-api.whoisxmlapi.com/" target="_blank">sign up</a>, to get your own API Key.
-                        </h3>
-                    </div>
+                    </h3>
                 <div>
                 <div class="panel-body">
                     <div class="input-group input-group-lg">
-                                <span class="input-group-addon">URL</span>
-                        Api Key: <input ng-model="key" type="text" id="apiKey" ng-change="change()" required /><br/>
-                        Domain Name: <input ng-model="domain" type="text" id="domainName" ng-change="change()" required /><br/>
-                        Type: <select ng-model="type" id="type" ng-change="change()" required>
-                            <option value="_all">All</option>
-                            <option value="A">A</option>
-                            <option value="NS">NS</option>
-                            <option value="MD">MD</option>
-                            <option value="MF">MF</option>
-                            <option value="CNAME">CNAME</option>
-                            <option value="SOA">SOA</option>
-                            <option value="MB">MB</option>
-                            <option value="MG">MG</option>
-                            <option value="MR">MR</option>
-                            <option value="NULL">NULL</option>
-                            <option value="WKS">WKS</option>
-                            <option value="PTR">PTR</option>
-                            <option value="HINFO">HINFO</option>
-                            <option value="MINFO">MINFO</option>
-                            <option value="MX">MX</option>
-                            <option value="TXT">TXT</option>
-                            <option value="RP">RP</option>
-                            <option value="AFSDB">AFSDB</option>
-                            <option value="X25">X25</option>
-                            <option value="ISDN">ISDN</option>
-                            <option value="RT">RT</option>
-                            <option value="NSAP">NSAP</option>
-                            <option value="NSAP_PTR">NSAP PTR</option>
-                            <option value="SIG">SIG</option>
-                            <option value="KEY">KEY</option>
-                            <option value="PX">PX</option>
-                        </select><br />
+                        <span class="input-group-addon">Api Key</span>
+                            <input ng-model="key" type="text" id="apiKey" ng-change="change()" required />
+                    </div>
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon">Domain Name</span>
+                        <input ng-model="domain" type="text" id="domainName" ng-change="change()" required />
+                    </div>
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon">Type</span>
+                        <select ng-model="type" id="type" ng-change="change()" required>
+                                <option value="_all">All</option>
+                                <option value="A">A</option>
+                                <option value="NS">NS</option>
+                                <option value="MD">MD</option>
+                                <option value="MF">MF</option>
+                                <option value="CNAME">CNAME</option>
+                                <option value="SOA">SOA</option>
+                                <option value="MB">MB</option>
+                                <option value="MG">MG</option>
+                                <option value="MR">MR</option>
+                                <option value="NULL">NULL</option>
+                                <option value="WKS">WKS</option>
+                                <option value="PTR">PTR</option>
+                                <option value="HINFO">HINFO</option>
+                                <option value="MINFO">MINFO</option>
+                                <option value="MX">MX</option>
+                                <option value="TXT">TXT</option>
+                                <option value="RP">RP</option>
+                                <option value="AFSDB">AFSDB</option>
+                                <option value="X25">X25</option>
+                                <option value="ISDN">ISDN</option>
+                                <option value="RT">RT</option>
+                                <option value="NSAP">NSAP</option>
+                                <option value="NSAP_PTR">NSAP PTR</option>
+                                <option value="SIG">SIG</option>
+                                <option value="KEY">KEY</option>
+                                <option value="PX">PX</option>
+                            </select>
                     </div>
                 </div>
                 <div class="panel-footer">
