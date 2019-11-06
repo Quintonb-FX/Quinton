@@ -25,12 +25,11 @@ dnsApp.controller('json', ['$scope', '$http', function ($scope, $http) {
                 '?apiKey=' + $scope.key +
                 '&domainName=' + $scope.domain +
                 '&type=' + $scope.type +
-                '&outputFormat=JSON&callback=JSON_CALLBACK';
-
-        $http.get(url).then(function (response)
+                '&outputFormat=JSON&callback=returnedRecords';
+        
+        returnedRecords = function(data)
         {
-            console.debug(response);
-    
+            console.log(data);
             require(['vs/editor/editor.main'], function () {
                 $scope.editor = monaco.editor.create(document.getElementById('container'), {
                     value: JSON.stringify(response.data, null, 2),
@@ -38,6 +37,12 @@ dnsApp.controller('json', ['$scope', '$http', function ($scope, $http) {
                     readOnly: true
                 });
             });
+        };
+
+        $http.get(url).then(function (response)
+        {
+            console.debug(response);
+    
         });
     };
 }]);
