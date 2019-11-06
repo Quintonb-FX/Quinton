@@ -29,16 +29,16 @@ dnsApp.controller('json', ['$scope', '$http', function ($scope, $http) {
                 '&type=' + $scope.type +
                 '&outputFormat=JSON&callback=JSON_CALLBACK';
 
-        $http.get(url).then(function (response)
+        $http.jsonp(url).success(function (response)
         {
             console.log(response);
     
             require(['vs/editor/editor.main'], function () {
-            $scope.editor = monaco.editor.create(document.getElementById('container'), {
-                value: JSON.stringify(response, null, 2),
-                language: 'json',
-                readOnly: true
-            });
+                $scope.editor = monaco.editor.create(document.getElementById('container'), {
+                    value: JSON.stringify(response, null, 2),
+                    language: 'json',
+                    readOnly: true
+                    });
             });
         });
     };
