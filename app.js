@@ -27,7 +27,7 @@ dnsApp.controller('json', ['$scope', '$http', function ($scope, $http) {
                 '&type=' + $scope.type +
                 '&outputFormat=JSON&callback=JSON_CALLBACK';
 
-        $http.jsonp(url).then(function (response)
+        $http.get(url).then(function (response)
         {
             console.debug(response);
     
