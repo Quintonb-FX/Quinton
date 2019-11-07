@@ -29,13 +29,13 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
             return;
         }
         
-        var url = rootUrl +
+        let url = rootUrl +
                 '?apiKey=' + $scope.key +
                 '&domainName=' + $scope.domain +
                 '&type=' + $scope.type +
                 '&outputFormat=JSON';
         
-        var trustedUrl = $sce.trustAsResourceUrl(url);
+        let trustedUrl = $sce.trustAsResourceUrl(url);
         $http.jsonp(trustedUrl, {jsonpCallbackParam: 'callback'}).then(function(data){
             $scope.editor.setValue(JSON.stringify($scope.data, null, 2));
         });
