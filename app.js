@@ -41,8 +41,6 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
         $http.jsonp(trustedUrl, {jsonpCallbackParam: 'callback'}).then(function(data){
             $scope.data = data.data.DNSData.dnsRecords;
             
-            console.debug($scope.data);
-
             $http.get("arm-a.json").then(function(response) {
                 let root = response.data;
                 root.name = $scope.domain;
