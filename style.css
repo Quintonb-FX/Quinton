@@ -1,51 +1,18 @@
-.jumbotron {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-    margin-bottom: 0;
-    background-color: #fff;
-  }
-  .jumbotron p:last-child {
-    margin-bottom: 0;
-  }
-  .jumbotron-heading {
-    font-weight: 400;
-  }
-  .jumbotron .container {
-    max-width: 40rem;
-  }
-  html {
-    position: relative;
-    min-height: 100%;
-  }
-  body {
-    /* Margin bottom by footer height */
-    margin-bottom: 60px;
-  }
-  .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    /* Set the fixed height of the footer here */
-    height: 60px;
-    line-height: 60px; /* Vertically center the text there */
-    background-color: #f5f5f5;
-  }
-  .vertical-center {
-    min-height: 90%;
-    /* Fallback for browsers do NOT support vh unit */
-    min-height: 90vh;
-    /* These two lines are counted as one :-)       */
-    display: flex;
-    align-items: center;
-  }
-  .codeEditor
-  {
-    border:1px solid grey
-  }
-  .fullscreen {
-    width: 100% !important;
-    height: 100% !important;
-    margin: 0;
-    top: 0;
-    left: 0;
+html,
+body {
+  height: 100%;
+  margin: 2
+}
+.codeEditor
+{
+  width: 100% !important;
+  height: 640px !important;
+  border:1px solid grey
+}
+.fullscreen {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0;
+  top: 0;
+  left: 0;
 }
