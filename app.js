@@ -37,7 +37,7 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
         
         let trustedUrl = $sce.trustAsResourceUrl(url);
         $http.jsonp(trustedUrl, {jsonpCallbackParam: 'callback'}).then(function(data){
-            $scope.editor.setValue(JSON.stringify($scope.data, null, 2));
+            $scope.editor.setValue(JSON.stringify(data.data, null, 2));
         });
     };
 }]);
