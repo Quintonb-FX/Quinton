@@ -12,10 +12,6 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
     $scope.type = '_all';
     $scope.domain - 'microsoft.com';
 
-    // $scope.root;
-    // $scope.data;
-    // $scope.arm;
-
     require(['vs/editor/editor.main'], function () {
         $scope.editor = monaco.editor.create(document.getElementById('container'), {
             language: 'json',
@@ -38,19 +34,38 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
                 '&domainName=' + $scope.domain +
                 '&type=' + $scope.type +
                 '&outputFormat=JSON';
+
+        $scope.arm = [];
         
         let trustedUrl = $sce.trustAsResourceUrl(url);
         $http.jsonp(trustedUrl, {jsonpCallbackParam: 'callback'}).then(function(data){
             $scope.data = data.data.DNSData.dnsRecords;
             
             $http.get("arm-a.json").then(function(response) {
-                $scope.root = response.data;
-                $scope.root.name = $scope.domain;
+                let root = response.data;
+                root.name = $scope.domain;
+                $scope.arm.push(root);
+
                 $scope.render();
             });
 
             $scope.data.forEach(function(record){
                 console.log(record);
+                switch (record.dnsType){
+                    case "NS":
+                    case "SOA":
+                        break;
+                    default:
+                        let url = "arm-" + record.dnsType.toLower() + ".json";
+                        console.log(url);
+                        $http.get(url).then(function(response) {
+                            let arm = response.data;
+                            arm.name = $scope.domain;
+                            $scope.arm.push(arm);
+                            
+                            $scope.render();
+                        });
+                }
             });
 
             $scope.render();
