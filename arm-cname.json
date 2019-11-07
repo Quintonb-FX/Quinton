@@ -2,7 +2,7 @@
     "type": "Microsoft.Network/dnszones/CNAME",
     "name": "",
     "apiVersion": "2018-05-01",
-    "location": "",
+    "location": "global",
     "dependsOn": [],
     "properties": {
         "TTL": 3600,

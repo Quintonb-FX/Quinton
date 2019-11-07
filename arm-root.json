@@ -2,6 +2,6 @@
     "type": "Microsoft.Network/dnszones",
     "name": "",
     "apiVersion": "2018-05-01",
-    "location": "",
+    "location": "global",
     "tags": {}
 }
