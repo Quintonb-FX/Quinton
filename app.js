@@ -69,21 +69,21 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
                                 case "TXT":
                                     response.strings.forEach(function (txt)
                                     {
-                                        arm.TXTRecords.push({value: txt});
+                                        arm.properties.TXTRecords.push({value: txt});
                                     });
                                     break;
                                 case "A":
-                                    arm.ARecords.push({
+                                    arm.properties.ARecords.push({
                                         ipv4Address: response.address
                                     });
                                     break;
                                 case "CNAME":
-                                    arm.CNAMERecord.push({
+                                    arm.properties.CNAMERecord.push({
                                         cname: response.address
                                     });
                                     break;
                                 case "MX":
-                                    arm.MXRecords.push({
+                                    arm.properties.MXRecords.push({
                                         preference: response.priority,
                                         exchange: response.target
                                     });
