@@ -10,7 +10,6 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
     const rootUrl = 'https://www.whoisxmlapi.com/whoisserver/DNSService';
 
     $scope.type = '_all';
-    $scope.domain - 'microsoft.com';
 
     require(['vs/editor/editor.main'], function () {
         $scope.editor = monaco.editor.create(document.getElementById('container'), {
@@ -50,12 +49,12 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
             });
 
             $scope.data.forEach(function(record){
-                console.debug(record);
                 switch (record.dnsType){
                     case "NS":
                     case "SOA":
                         break;
                     default:
+                        console.debug(record);
                         let url = "arm-" + record.dnsType.toLowerCase() + ".json";
 
                         $http.get(url).then(function(response) {
