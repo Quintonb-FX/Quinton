@@ -73,13 +73,18 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
                                     });
                                     break;
                                 case "A":
-                                    arm.ARecords.push({ipv4Address: response.address});
+                                    arm.ARecords.push({
+                                        ipv4Address: response.address
+                                    });
                                     break;
                                 case "CNAME":
-                                    arm.CNAMERecord.push({cname: response.address});
+                                    arm.CNAMERecord.push({
+                                        cname: response.address
+                                    });
                                     break;
                                 case "MX":
-                                    arm.MXRecords.push({preference: response.priority,
+                                    arm.MXRecords.push({
+                                        preference: response.priority,
                                         exchange: response.target
                                     });
                                     break;
