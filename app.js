@@ -41,7 +41,7 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
         $http.jsonp(trustedUrl, {jsonpCallbackParam: 'callback'}).then(function(data){
             $scope.data = data.data.DNSData.dnsRecords;
             
-            $http.get("arm-a.json").then(function(response) {
+            $http.get("arm-root.json").then(function(response) {
                 let root = response.data;
                 root.name = $scope.domain;
                 $scope.arm.push(root);
@@ -61,29 +61,31 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
                         $http.get(url).then(function(response) {
                             let arm = response.data;
                             arm.name = $scope.domain;
-                            arm.properties.TTL = response.ttl;
+                            arm.properties.TTL = record.ttl;
                             arm.dependsOn.push($scope.domain);
                             switch (record.dnsType){
                                 case "TXT":
-                                    response.strings.forEach(function (txt)
+                                    record.strings.forEach(function (txt)
                                     {
-                                        arm.properties.TXTRecords.push({value: txt});
+                                        arm.properties.TXTRecords.push({
+                                            value: txt
+                                        });
                                     });
                                     break;
                                 case "A":
                                     arm.properties.ARecords.push({
-                                        ipv4Address: response.address
+                                        ipv4Address: record.address
                                     });
                                     break;
                                 case "CNAME":
                                     arm.properties.CNAMERecord.push({
-                                        cname: response.address
+                                        cname: record.address
                                     });
                                     break;
                                 case "MX":
                                     arm.properties.MXRecords.push({
-                                        preference: response.priority,
-                                        exchange: response.target
+                                        preference: record.priority,
+                                        exchange: record.target
                                     });
                                     break;
                             }
