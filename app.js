@@ -87,6 +87,9 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
                                         exchange: record.target
                                     });
                                     break;
+                                default:
+                                    console.warn("unknown record type: " + record.dnsType);
+                                    break;
                             }
 
                             $scope.arm.push(arm);
