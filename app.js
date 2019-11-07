@@ -67,8 +67,6 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
                         });
                 }
             });
-
-            $scope.render();
         });
     };
 
