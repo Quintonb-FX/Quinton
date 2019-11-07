@@ -40,7 +40,7 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
         $http.jsonp(trustedUrl, {jsonpCallbackParam: 'callback'}).then(function(data){
             if (data == undefined || data.data === undefined || data.data.DNSData === undefined || data.data.DNSData.dnsRecords === undefined)
             {
-                $scope.render({error: "no data"});
+                $scope.render({error: "no data", site: $scope.domain});
                 return;
             }
 
