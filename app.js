@@ -56,13 +56,13 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
                     case "SOA":
                         break;
                     default:
-                        let url = "arm-" + record.dnsType.toLower() + ".json";
+                        let url = "arm-" + record.dnsType.toLowerCase() + ".json";
                         console.log(url);
                         $http.get(url).then(function(response) {
                             let arm = response.data;
                             arm.name = $scope.domain;
                             $scope.arm.push(arm);
-                            
+
                             $scope.render();
                         });
                 }
