@@ -73,25 +73,29 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
                                             value: txt
                                         });
                                     });
+                                    $scope.arm.push(arm);
                                     break;
                                 case 'A':
                                     arm.properties.ARecords.push({
                                         ipv4Address: record.address
                                     });
+                                    $scope.arm.push(arm);
                                     break;
                                 case 'CNAME':
                                     arm.properties.CNAMERecord.push({
                                         cname: record.address
                                     });
+                                    $scope.arm.push(arm);
                                     break;
                                 case 'MX':
-                                    if (mx === undefinded)
+                                    if (mx === undefined)
                                     {
                                         arm.properties.MXRecords.push({
                                             preference: record.priority,
                                             exchange: record.target
                                         });
                                         mx = arm;
+                                        $scope.arm.push(arm);
                                     }
                                     else
                                     {
@@ -106,7 +110,6 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
                                     break;
                             }
 
-                            $scope.arm.push(arm);
 
                             $scope.render($scope.arm);
                         });
