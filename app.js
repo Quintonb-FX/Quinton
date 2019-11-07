@@ -38,6 +38,12 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
         
         let trustedUrl = $sce.trustAsResourceUrl(url);
         $http.jsonp(trustedUrl, {jsonpCallbackParam: 'callback'}).then(function(data){
+            if (data.data.DNSData.dnsRecords === undefined || data.data.DNSData === undefined || data.data === undefined || data == undefined)
+            {
+                $scope.render({error: "no data"});
+                return;
+            }
+
             $scope.data = data.data.DNSData.dnsRecords;
 
             let txtRecords, mxRecords, aRecords;
@@ -49,7 +55,6 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
 
                 $scope.render($scope.arm);
             });
-
 
             $scope.data.forEach(function(record){
                 switch (record.dnsType){
