@@ -1,0 +1,15 @@
+{
+    "type": "Microsoft.Network/dnszones/txt",
+    "name": "",
+    "apiVersion": "2018-05-01",
+    "location": "",
+    "dependsOn": [],
+    "properties": {
+        "TTL": 3600,
+        "TXTRecords": [
+            {
+                "value": []
+            }
+        ]
+    }
+}
