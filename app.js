@@ -63,7 +63,18 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
                         $http.get(url).then(function(response) {
                             let arm = response.data;
                             arm.name = $scope.domain;
+                            arm.properties.TTL = response.ttl;
                             arm.dependsOn.push($scope.domain);
+                            switch (record.dnsType){
+                                case "TXT":
+                                    break;
+                                case "A":
+                                    arm.ARecords.push({ipv4Address: response.address})
+                                    break;
+                                case "MX":
+                                    break;
+                            }
+
                             $scope.arm.push(arm);
 
                             $scope.render();
