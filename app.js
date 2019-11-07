@@ -39,14 +39,17 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
         let trustedUrl = $sce.trustAsResourceUrl(url);
         $http.jsonp(trustedUrl, {jsonpCallbackParam: 'callback'}).then(function(data){
             $scope.data = data.data.DNSData.dnsRecords;
-            
+
+            let txt, root, mx, a;
+
             $http.get('arm-root.json').then(function(response) {
                 let root = response.data;
                 root.name = $scope.domain;
                 $scope.arm.push(root);
 
-                $scope.render();
+                $scope.render($scope.arm);
             });
+
 
             $scope.data.forEach(function(record){
                 switch (record.dnsType){
@@ -82,10 +85,21 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
                                     });
                                     break;
                                 case 'MX':
-                                    arm.properties.MXRecords.push({
-                                        preference: record.priority,
-                                        exchange: record.target
-                                    });
+                                    if (mx === undefinded)
+                                    {
+                                        arm.properties.MXRecords.push({
+                                            preference: record.priority,
+                                            exchange: record.target
+                                        });
+                                        mx = arm;
+                                    }
+                                    else
+                                    {
+                                        mx.properties.MXRecords.push({
+                                            preference: record.priority,
+                                            exchange: record.target
+                                        });
+                                    }
                                     break;
                                 default:
                                     console.warn('unknown record type: ' + record.dnsType);
@@ -94,14 +108,14 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
 
                             $scope.arm.push(arm);
 
-                            $scope.render();
+                            $scope.render($scope.arm);
                         });
                 }
             });
         });
     };
 
-    $scope.render = function(){
-        $scope.editor.setValue(JSON.stringify($scope.arm, null, 2));
+    $scope.render = function(data){
+        $scope.editor.setValue(JSON.stringify(data, null, 2));
     }
 }]);
