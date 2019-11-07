@@ -40,7 +40,7 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
         $http.jsonp(trustedUrl, {jsonpCallbackParam: 'callback'}).then(function(data){
             $scope.data = data.data.DNSData.dnsRecords;
 
-            let txt, root, mx, a;
+            let txtRecords, mxRecords, aRecords;
 
             $http.get('arm-root.json').then(function(response) {
                 let root = response.data;
@@ -67,7 +67,7 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
                             arm.dependsOn.push($scope.domain);
                             switch (record.dnsType){
                                 case 'TXT':
-                                    if (txt === undefined)
+                                    if (txtRecords === undefined)
                                     {
                                         record.strings.forEach(function (str)
                                         {
@@ -75,31 +75,31 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
                                                 value: str
                                             });
                                         });
-                                        txt = arm;
+                                        txtRecords = arm.properties.TXTRecords;
                                         $scope.arm.push(arm);
                                     }
                                     else
                                     {
                                         record.strings.forEach(function (str)
                                         {
-                                            txt.properties.TXTRecords.push({
+                                            txtRecords.push({
                                                 value: str
                                             });
                                         });
                                     }
                                     break;
                                 case 'A':
-                                    if (a === undefined)
+                                    if (aRecords === undefined)
                                     {
                                         arm.properties.ARecords.push({
                                             ipv4Address: record.address
                                         });
-                                        a = arm;
+                                        aRecords = arm.properties.ARecords;
                                         $scope.arm.push(arm);
                                     }
                                     else
                                     {
-                                        a.properties.ARecords.push({
+                                        aRecords.push({
                                             ipv4Address: record.address
                                         });
                                     }
@@ -111,18 +111,18 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
                                     $scope.arm.push(arm);
                                     break;
                                 case 'MX':
-                                    if (mx === undefined)
+                                    if (mxRecords === undefined)
                                     {
                                         arm.properties.MXRecords.push({
                                             preference: record.priority,
                                             exchange: record.target
                                         });
-                                        mx = arm;
+                                        mxRecords = arm.properties.MXRecords;
                                         $scope.arm.push(arm);
                                     }
                                     else
                                     {
-                                        mx.properties.MXRecords.push({
+                                        mxRecords.push({
                                             preference: record.priority,
                                             exchange: record.target
                                         });
@@ -132,7 +132,6 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
                                     console.warn('unknown record type: ' + record.dnsType);
                                     break;
                             }
-
 
                             $scope.render($scope.arm);
                         });
