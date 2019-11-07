@@ -40,7 +40,7 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
         $http.jsonp(trustedUrl, {jsonpCallbackParam: 'callback'}).then(function(data){
             $scope.data = data.data.DNSData.dnsRecords;
             
-            $http.get("arm-root.json").then(function(response) {
+            $http.get('arm-root.json').then(function(response) {
                 let root = response.data;
                 root.name = $scope.domain;
                 $scope.arm.push(root);
@@ -50,20 +50,20 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
 
             $scope.data.forEach(function(record){
                 switch (record.dnsType){
-                    case "NS":
-                    case "SOA":
+                    case 'NS':
+                    case 'SOA':
                         break;
                     default:
                         console.debug(record);
-                        let url = "arm-" + record.dnsType.toLowerCase() + ".json";
+                        let url = 'arm-' + record.dnsType.toLowerCase() + '.json';
 
                         $http.get(url).then(function(response) {
                             let arm = response.data;
-                            arm.name = $scope.domain;
+                            arm.name = $scope.domain + '/@';
                             arm.properties.TTL = record.ttl;
                             arm.dependsOn.push($scope.domain);
                             switch (record.dnsType){
-                                case "TXT":
+                                case 'TXT':
                                     record.strings.forEach(function (txt)
                                     {
                                         arm.properties.TXTRecords.push({
@@ -71,24 +71,24 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
                                         });
                                     });
                                     break;
-                                case "A":
+                                case 'A':
                                     arm.properties.ARecords.push({
                                         ipv4Address: record.address
                                     });
                                     break;
-                                case "CNAME":
+                                case 'CNAME':
                                     arm.properties.CNAMERecord.push({
                                         cname: record.address
                                     });
                                     break;
-                                case "MX":
+                                case 'MX':
                                     arm.properties.MXRecords.push({
                                         preference: record.priority,
                                         exchange: record.target
                                     });
                                     break;
                                 default:
-                                    console.warn("unknown record type: " + record.dnsType);
+                                    console.warn('unknown record type: ' + record.dnsType);
                                     break;
                             }
 
