@@ -63,7 +63,7 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
                         $http.get(url).then(function(response) {
                             let arm = response.data;
                             arm.name = $scope.domain;
-                            arm.dependsOn.push(domain);
+                            arm.dependsOn.push($scope.domain);
                             $scope.arm.push(arm);
 
                             $scope.render();
