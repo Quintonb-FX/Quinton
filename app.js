@@ -49,6 +49,10 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
                 $scope.render();
             });
 
+            $scope.data.forEach(function(record){
+                console.log(record);
+            });
+
             $scope.render();
         });
     };
