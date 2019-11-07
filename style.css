@@ -6,7 +6,7 @@ body {
 .codeEditor
 {
   width: 100% !important;
-  height: 640px !important;
+  height: 1280px !important;
   border:1px solid grey
 }
 .fullscreen {
