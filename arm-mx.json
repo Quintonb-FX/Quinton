@@ -1,15 +1,12 @@
 {
-    "type": "Microsoft.Network/dnszones/mx",
+    "type": "Microsoft.Network/dnszones/MX",
     "name": "",
     "apiVersion": "2018-05-01",
     "location": "",
     "dependsOn": [],
     "properties": {
         "TTL": 3600,
-        "ARecords": [
-            {
-                "ipv4Address": ""
-            }
+        "MXRecords": [
         ]
     }
 }

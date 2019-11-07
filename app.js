@@ -52,14 +52,14 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
             });
 
             $scope.data.forEach(function(record){
-                console.log(record);
+                console.debug(record);
                 switch (record.dnsType){
                     case "NS":
                     case "SOA":
                         break;
                     default:
                         let url = "arm-" + record.dnsType.toLowerCase() + ".json";
-                        console.log(url);
+
                         $http.get(url).then(function(response) {
                             let arm = response.data;
                             arm.name = $scope.domain;
@@ -67,11 +67,18 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
                             arm.dependsOn.push($scope.domain);
                             switch (record.dnsType){
                                 case "TXT":
+                                    response.strings.forEach(function (txt)
+                                    {
+                                        arm.TXTRecords.push({value: txt});
+                                    });
                                     break;
                                 case "A":
-                                    arm.ARecords.push({ipv4Address: response.address})
+                                    arm.ARecords.push({ipv4Address: response.address});
                                     break;
                                 case "MX":
+                                    arm.MXRecords.push({preference: response.priority,
+                                        exchange: response.target
+                                    });
                                     break;
                             }
 
