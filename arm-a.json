@@ -1,0 +1,15 @@
+{
+    "type": "Microsoft.Network/dnszones/a",
+    "name": "",
+    "apiVersion": "2018-05-01",
+    "location": "",
+    "dependsOn": [],
+    "properties": {
+        "TTL": 3600,
+        "ARecords": [
+            {
+                "ipv4Address": ""
+            }
+        ]
+    }
+}

@@ -40,6 +40,12 @@
   }
   .codeEditor
   {
-    height:500px;
     border:1px solid grey
   }
+  .fullscreen {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0;
+    top: 0;
+    left: 0;
+}

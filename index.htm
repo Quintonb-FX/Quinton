@@ -19,7 +19,7 @@
         <script src="app.js"></script>
     </head>
     <body>
-        <div class="container vertical-center">
+        <div class="modal-dialog fullscreen">
             <div class="panel panel-primary" ng-controller="json">
                 <div class="panel-heading">
                     <h3 class="panel-title">
@@ -32,7 +32,7 @@
                             <input ng-model="key" type="text" id="apiKey" ng-change="change()" class="form-control" required />
                     </div>
                     <div class="input-group input-group-lg">
-                        <span class="input-group-addon">Domain Name</span>
+                        <span class="input-group-addon">Domain</span>
                         <input ng-model="domain" type="text" id="domainName" ng-change="change()" class="form-control" required />
                     </div>
                     <div class="input-group input-group-lg">
@@ -68,7 +68,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="panel-footer">
+                <div class="panel-footer fullscreen">
                     <div id="container" class="codeEditor"></div>
                 </div>
             </div>
