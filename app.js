@@ -27,6 +27,8 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
         {
             return;
         }
+
+        $scope.render({info: "loading", site: $scope.domain, key: $scope.key});
         
         let url = rootUrl +
                 '?apiKey=' + $scope.key +
