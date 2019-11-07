@@ -12,6 +12,13 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
     $scope.type = '_all';
     $scope.domain - 'microsoft.com';
 
+    require(['vs/editor/editor.main'], function () {
+        $scope.editor = monaco.editor.create(document.getElementById('container'), {
+            language: 'json',
+            readOnly: true
+        });
+    });
+
     $scope.change = function () {
         if ($scope.key === undefined)
         {
@@ -30,13 +37,7 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
         
         var trustedUrl = $sce.trustAsResourceUrl(url);
         $http.jsonp(trustedUrl, {jsonpCallbackParam: 'callback'}).then(function(data){
-            require(['vs/editor/editor.main'], function () {
-                $scope.editor = monaco.editor.create(document.getElementById('container'), {
-                    value: JSON.stringify(data.data, null, 2),
-                    language: 'json',
-                    readOnly: true
-                });
-            });
+            $scope.editor.setValue(JSON.stringify($scope.data, null, 2));
         });
     };
 }]);
