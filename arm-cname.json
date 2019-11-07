@@ -6,8 +6,6 @@
     "dependsOn": [],
     "properties": {
         "TTL": 3600,
-        "CNAMERecord": {
-            "cname": ""
-        }
+        "CNAMERecord": {}
     }
 }

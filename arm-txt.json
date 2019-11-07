@@ -6,10 +6,6 @@
     "dependsOn": [],
     "properties": {
         "TTL": 3600,
-        "TXTRecords": [
-            {
-                "value": []
-            }
-        ]
+        "TXTRecords": []
     }
 }

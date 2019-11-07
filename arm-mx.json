@@ -6,7 +6,6 @@
     "dependsOn": [],
     "properties": {
         "TTL": 3600,
-        "MXRecords": [
-        ]
+        "MXRecords": []
     }
 }

@@ -6,10 +6,6 @@
     "dependsOn": [],
     "properties": {
         "TTL": 3600,
-        "ARecords": [
-            {
-                "ipv4Address": ""
-            }
-        ]
+        "ARecords": []
     }
 }
