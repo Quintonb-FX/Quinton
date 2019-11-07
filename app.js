@@ -67,19 +67,42 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
                             arm.dependsOn.push($scope.domain);
                             switch (record.dnsType){
                                 case 'TXT':
-                                    record.strings.forEach(function (txt)
+                                    if (txt === undefined)
                                     {
-                                        arm.properties.TXTRecords.push({
-                                            value: txt
+                                        record.strings.forEach(function (str)
+                                        {
+                                            arm.properties.TXTRecords.push({
+                                                value: str
+                                            });
                                         });
-                                    });
-                                    $scope.arm.push(arm);
+                                        txt = arm;
+                                        $scope.arm.push(arm);
+                                    }
+                                    else
+                                    {
+                                        record.strings.forEach(function (str)
+                                        {
+                                            txt.properties.TXTRecords.push({
+                                                value: str
+                                            });
+                                        });
+                                    }
                                     break;
                                 case 'A':
-                                    arm.properties.ARecords.push({
-                                        ipv4Address: record.address
-                                    });
-                                    $scope.arm.push(arm);
+                                    if (a === undefined)
+                                    {
+                                        arm.properties.ARecords.push({
+                                            ipv4Address: record.address
+                                        });
+                                        a = arm;
+                                        $scope.arm.push(arm);
+                                    }
+                                    else
+                                    {
+                                        a.properties.ARecords.push({
+                                            ipv4Address: record.address
+                                        });
+                                    }
                                     break;
                                 case 'CNAME':
                                     arm.properties.CNAMERecord.push({
