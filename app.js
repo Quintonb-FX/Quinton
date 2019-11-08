@@ -79,7 +79,7 @@ dnsApp.controller('json', ['$scope', '$http', '$sce', function ($scope, $http, $
                                         record.strings.forEach(function (str)
                                         {
                                             arm.properties.TXTRecords.push({
-                                                value: str
+                                                value: [str]
                                             });
                                         });
                                         txtRecords = arm.properties.TXTRecords;
